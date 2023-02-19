@@ -33,6 +33,8 @@ var weightsRouter = require('./routes/weights');
 var ordersRouter = require('./routes/orders');
 var reviewsRouter = require('./routes/reviews');
 var customersRouter = require('./routes/customers');
+var privacyRouter = require('./routes/privacy');
+var helpRouter = require('./routes/help');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,6 +56,8 @@ app.use('/weights', weightsRouter);
 app.use('/orders', ordersRouter);
 app.use('/reviews', reviewsRouter);
 app.use('/customers', customersRouter);
+app.use('/privacy', privacyRouter);
+app.use('/help', helpRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
