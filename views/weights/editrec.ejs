@@ -1,0 +1,12 @@
+<h1>Edit</h1>
+<form action="/weights/save" method="post">
+   <input type="hidden" name="product_id" value="<%= onerec.product_id %>" >
+<table>
+	<tr> <td> Product Name: </td> <td> <input type="text" name="product_name" value="<%= onerec.product_name %>" required> </td> </tr>
+	<tr> <td> Brand: </td> <td> <input type="text" name="brand" value="<%= onerec.brand %>" required>  </td> </tr>
+	<tr> <td> Pounds: </td> <td> <input type="number" name="pound" value="<%= onerec.pound %>" required> </td> </tr>
+	<tr> <td> Color: </td> <td> <input type="text" name="color" value="<%= onerec.color %>" required>  </td> </tr>
+
+</table>
+<button type="submit">Save</button>
+</form>
