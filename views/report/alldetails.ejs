@@ -1,0 +1,23 @@
+<h2>Orders</h2>
+<% if (allrecs.length > 0) {%>
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Product ID</th>
+            <th>Sale price</th>
+            <th>Quantity</th>
+            
+        </tr>
+      <% allrecs.forEach((recref, index) => { %>
+        <tr>
+            <td><%= recref.orderdetail_id %></td>
+            <td><%= recref.product_id %></td>
+            <td><%= recref.saleprice %></td>
+            <td><%= recref.qty %></td>
+            </tr>
+    <% }); %>
+    </table>
+    <% } else { %>
+        <p>Not Records Available</p>
+    <% } %>
+

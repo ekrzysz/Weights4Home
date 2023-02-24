@@ -1,13 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Weights4Home</h1>
-    <p>Welcome to Weights4Home, the best place to by home weights!</p>
-    <br>
-    <p>Check out our product catalog below (under construction)</p>
-  </body>
-</html>
+<p> Weights4Home</p>
+<table> <tr><td width="80%">
+<% if (allrecs.length > 0) {%>
+ <% allrecs.forEach((recref, index) => { %>
+ <product>
+<table>
+  <tr> <td><%= recref.product_id %></td><td><%= recref.product_name %></td></tr>
+  <tr> <td colspan="2"><%= recref.brand %></td></tr>
+  <tr> <td colspan="2"><%= recref.pound %></td></tr>
+  <td><a href='/weights/<%= recref.product_id %>/show'>Details</a></td></tr>
+</table>
+ </product>
+ <% }); %>
+<% } %>
+</td>
+<td width="20%">
+ <% if (promos.length > 0) {%>
+<table>
+ <% promos.forEach((recref, index) => { %>
+<tr><td><img src="/images/<%= recref.promoimage %>" width="300" height="300"></td></tr>
+</table>
+ <% }); %>
+<% } %>
+</td>
+</tr></table>
