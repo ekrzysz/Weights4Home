@@ -90,7 +90,7 @@ router.get('/addrecord', function(req, res, next) {
 // ==================================================
 router.post('/', function(req, res, next) {
 
-    let insertquery = "INSERT INTO orderdetails (product_id, saleprice, qty) VALUES (?, ?, ?)"; 
+    let insertquery = "INSERT INTO orderdetail (product_id, saleprice, qty) VALUES (?, ?, ?)"; 
     
     db.query(insertquery,[req.body.product_id, req.body.saleprice, req.body.qty],(err, result) => {
         if (err) {
