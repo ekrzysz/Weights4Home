@@ -47,6 +47,7 @@ INSERT INTO customer(firstname, lastname, email, phone, address1, city, state, z
 INSERT INTO customer(firstname, lastname, email, phone, address1, city, state, zip, username, password) VALUES ("John", "rodgers", "jrodgers@depaul.edu", "6306733146", "123 Main Street", "Chicago", "IL", "60101", "krazvi", "password");
 INSERT INTO customer(firstname, lastname, email, phone, address1, city, state, zip, username, password) VALUES ("jimmy", "wales", "jwales@depaul.edu", "6306733146", "123 Main Street", "Chicago", "IL", "60101", "krazvi", "password");
 
+INSERT INTO weight_products(product_id, product_name, brand, pound, color, des, price) VALUES (10,"dumbbells", "velocity", 10, "pink", "this is test", 100);
 
 INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (10,"dumbbells", "velocity", 10, "pink");
 INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (11,"dumbbells", "velocity", 20, "pink");

@@ -46,7 +46,7 @@ var router = express.Router();
 // ==================================================
 
 router.get('/', function(req, res, next) {
-    let query = "SELECT product_id, product_name, brand, pound, color, homepage FROM weight_products"; 
+    let query = "SELECT product_id, product_name, brand, pound, color, des, price, homepage FROM weight_products"; 
 
   // execute query
   db.query(query, (err, result) => {
@@ -63,7 +63,7 @@ router.get('/', function(req, res, next) {
 // URL: http://localhost:3002/automobile/99/show
 // ==================================================
 router.get('/:recordid/show', function(req, res, next) {
-    let query = "SELECT product_id, product_name, brand, pound, color, homepage FROM weight_products WHERE product_id = " + req.params.recordid; 
+    let query = "SELECT product_id, product_name, brand, pound, color, des, price, homepage FROM weight_products WHERE product_id = " + req.params.recordid; 
     
     // execute query
     db.query(query, (err, result) => {
@@ -90,7 +90,7 @@ router.get('/addrecord', function(req, res, next) {
 // ==================================================
 router.post('/', function(req, res, next) {
 
-    let insertquery = "INSERT INTO weight_products (product_name, brand, pound, color, homepage) VALUES (?, ?, ?, ?, ?)"; 
+    let insertquery = "INSERT INTO weight_products (product_name, brand, pound, color, des, price, homepage) VALUES (?, ?, ?, ?, ?, ?, ?)"; 
     
     var homepage_value=0;
     if (req.body.homepage)
@@ -99,7 +99,7 @@ router.post('/', function(req, res, next) {
     }
 
 
-    db.query(insertquery,[req.body.product_name, req.body.brand, req.body.pound, req.body.color, homepage_value],(err, result) => {
+    db.query(insertquery,[req.body.product_name, req.body.brand, req.body.pound, req.body.color, req.body.des, req.body.price, homepage_value],(err, result) => {
         if (err) {
                 console.log(err);
                 res.render('error');
@@ -114,7 +114,7 @@ router.post('/', function(req, res, next) {
 // URL: http://localhost:3002/automobile/99/edit 
 // ==================================================
 router.get('/:recordid/edit', function(req, res, next) {
-    let query = "SELECT product_id, product_name, brand, pound, color, homepage FROM weight_products WHERE product_id = " + req.params.recordid; 
+    let query = "SELECT product_id, product_name, brand, pound, color, des, price, homepage FROM weight_products WHERE product_id = " + req.params.recordid; 
     
       // execute query
       db.query(query, (err, result) => {
@@ -132,7 +132,7 @@ router.get('/:recordid/edit', function(req, res, next) {
 // Route to save edited data in database.
 // ==================================================
 router.post('/save', function(req, res, next) {
-	let updatequery = "UPDATE weight_products SET product_name = ?, brand = ?, pound = ?, color = ?, homepage = ? WHERE product_id = " + req.body.product_id; 
+	let updatequery = "UPDATE weight_products SET product_name = ?, brand = ?, pound = ?, color = ?, des = ?, price = ?, homepage = ? WHERE product_id = " + req.body.product_id; 
 
     var homepage_value=0;
     if (req.body.homepage)
@@ -140,7 +140,7 @@ router.post('/save', function(req, res, next) {
         homepage_value = 1;
     }
 
-	db.query(updatequery,[req.body.product_name, req.body.brand, req.body.pound, req.body.color, homepage_value],(err, result) => {
+	db.query(updatequery,[req.body.product_name, req.body.brand, req.body.pound, req.body.color, req.body.des, req.body.price, homepage_value],(err, result) => {
 		if (err) {
 			console.log(err);
 			res.render('error');

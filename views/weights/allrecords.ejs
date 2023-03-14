@@ -6,6 +6,8 @@
                 <th>Brand</th>
                 <th>pounds</th>
                 <th>color</th>
+                <th>description</th>
+                <th>price</th>
                 <th>homepage</th>
             </tr>
           <% allrecs.forEach((recref, index) => { %>
@@ -15,6 +17,8 @@
                 <td><%= recref.brand %></td>
                 <td><%= recref.pound %></td>
                 <td><%= recref.color %></td>
+                <td><%= recref.des %></td>
+                <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.price) %></td>
                 <td><%= recref.homepage %></td>
                 <td><a href='/weights/<%= recref.product_id %>/show'> Details</a></td>
                 <td><a href='/weights/<%= recref.product_id %>/edit'>Edit</a></td>
