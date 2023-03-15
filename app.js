@@ -6,6 +6,7 @@ var logger = require('morgan');
 var layouts = require('express-ejs-layouts');
 var dotenv = require('dotenv');
 dotenv.config();
+const session = require('express-session');
 
 const mariadb = require('mariadb/callback');
 const db = mariadb.createConnection({host: process.env.DB_HOST,
@@ -37,6 +38,7 @@ var privacyRouter = require('./routes/privacy');
 var helpRouter = require('./routes/help');
 var searchRouter = require('./routes/search');
 var reportRouter = require('./routes/report');
+var catalogRouter = require('./routes/catalog');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,6 +49,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({secret: 'KoolKarsAppSecret'}));
+app.use(function(req,res,next){
+res.locals.session = req.session;
+next();
+});
+
 
 app.use(layouts);
 
@@ -62,6 +71,7 @@ app.use('/privacy', privacyRouter);
 app.use('/help', helpRouter);
 app.use('/search', searchRouter);
 app.use('/report', reportRouter);
+app.use('/catalog', catalogRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

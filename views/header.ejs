@@ -3,8 +3,16 @@
     <a href="/"><img src="images/weights4homeLogo.png" alt="Weights for home logo" width="70" height="40">
     </a></td>
      <td width='60%' align='center'><a href="/"><h1>Weights4Home</h1></a></td>
-     <td width='10%' align='center'>Login Control</td>
-     <td width='10%' align='center'>Cart Control</td>
+     <td width='10%' align='center'>
+        <% if(session.customer_id > 0) { %>
+            <b> Hello <b> <%= session.custname %>! </b> </br>
+            <a href='/customers/logout'>Logout</a>
+            <% } else { %>
+            <a href='/customers/register'>New Customer</a> </br>
+            <a href='/customers/login'>Login</a>
+            <% } %>
+     </td>
+     <td width='10%' align='center'><a href="/catalog/cart">Cart Control</a></td>
     </tr></table>
     
     <p><form action="/search" method="get">
@@ -17,6 +25,7 @@
     <li> <a href="/">Home</a> </li>
     <li> <a href="/about">About Us</a> </li>
     <li> <a href="/contact">Contact Us</a> </li>
+    <li> <a href="/catalog">Catalog</a> </li>
     <li> <a href="/weights">Products</a> </li>
     <li> <a href="/orders">Order details</a> </li>
     <li> <a href="/reviews">Reviews</a> </li>
