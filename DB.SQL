@@ -21,6 +21,16 @@ CREATE TABLE weight_products(
 );
 
 
+CREATE TABLE saleorder (
+order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+customer_id INT NOT NULL,
+saledate DATE NOT NULL,
+customernotes VARCHAR(500),
+paymentstatus VARCHAR(10),
+authorizationnum VARCHAR(10),
+FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE ON UPDATE RESTRICT
+);
+
 CREATE TABLE orderdetail (
 	orderdetail_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	product_id INT NOT NULL,
@@ -48,12 +58,11 @@ INSERT INTO customer(firstname, lastname, email, phone, address1, city, state, z
 INSERT INTO customer(firstname, lastname, email, phone, address1, city, state, zip, username, password) VALUES ("jimmy", "wales", "jwales@depaul.edu", "6306733146", "123 Main Street", "Chicago", "IL", "60101", "krazvi", "password");
 
 INSERT INTO weight_products(product_id, product_name, brand, pound, color, des, price) VALUES (10,"dumbbells", "velocity", 10, "pink", "this is test", 100);
+INSERT INTO weight_products(product_id, product_name, brand, pound, color, des, price) VALUES (10,"dumbbells", "velocity", 10, "pink", "this is test", 100);
+INSERT INTO weight_products(product_id, product_name, brand, pound, color, des, price) VALUES (10,"dumbbells", "velocity", 10, "pink", "this is test", 100);
+INSERT INTO weight_products(product_id, product_name, brand, pound, color, des, price) VALUES (10,"dumbbells", "velocity", 10, "pink", "this is test", 100);
+INSERT INTO weight_products(product_id, product_name, brand, pound, color, des, price) VALUES (10,"dumbbells", "velocity", 10, "pink", "this is test", 100);
 
-INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (10,"dumbbells", "velocity", 10, "pink");
-INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (11,"dumbbells", "velocity", 20, "pink");
-INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (12,"dumbbells", "velocity", 30, "pink");
-INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (13,"dumbbells", "velocity", 40, "pink");
-INSERT INTO weight_products(product_id, product_name, brand, pound, color) VALUES (14,"dumbbells", "velocity", 50, "pink");
 
 INSERT INTO orderdetail (orderdetail_id, product_id, saleprice, qty) VALUES (12, 10, 75.00, 1);
 INSERT INTO orderdetail (orderdetail_id, product_id, saleprice, qty) VALUES (13, 10, 76.00, 1);
@@ -67,4 +76,9 @@ INSERT INTO review (review_id, customer_id, product_id, reviewdate, comments, ra
 INSERT INTO review (review_id, customer_id, product_id, reviewdate, comments, rating, status) VALUES (14,2,10,"2022-10-01", "average", 3, "go");
 INSERT INTO review (review_id, customer_id, product_id, reviewdate, comments, rating, status) VALUES (4,2,10,"2022-10-01", "averge", 4, "go");
 
+INSERT INTO saleorder (order_id, customer_id, saledate, customernotes, paymentstatus, authorizationnum) VALUES (14, 2, "2022-10-01", "great", "cleared", 99);
+INSERT INTO saleorder (order_id, customer_id, saledate, customernotes, paymentstatus, authorizationnum) VALUES (15, 2, "2022-10-01", "great", "cleared", 99);
+INSERT INTO saleorder (order_id, customer_id, saledate, customernotes, paymentstatus, authorizationnum) VALUES (16, 2, "2022-11-01", "great", "cleared", 99);
+INSERT INTO saleorder (order_id, customer_id, saledate, customernotes, paymentstatus, authorizationnum) VALUES (17, 2, "2020-10-01", "great", "cleared", 99);
+INSERT INTO saleorder (order_id, customer_id, saledate, customernotes, paymentstatus, authorizationnum) VALUES (18, 2, "1999-10-01", "great", "cleared", 99);
 
